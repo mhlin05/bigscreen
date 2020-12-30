@@ -35,9 +35,10 @@ export default {
     async getDate(){
       var mydata= await this.$axios.get('/dataHard/test')
       .then(res=>res.data.data);
-      //console.log(mydata);
+      // console.log(mydata);
       for(var i=mydata.length-1;i>=0;i--){
        var a=JSON.parse(mydata[i].data);
+      //  console.log(mydata[i])
        this.cdata.timeDate.push(mydata[i].time);
        this.cdata.temDate.push(a.temp);
        this.cdata.wetDate.push(a.wet);

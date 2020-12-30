@@ -39,10 +39,9 @@ Vue.config.productionTip = false;
 // 配置axios
 Vue.prototype.$axios = Axios;
 
-Axios.defaults.baseURL=process.env.NODE_ENV === 'production'?'http://10.12.44.64:9080/equipment':'http://47.110.75.177:8080/io2/equipment'
+// Axios.defaults.baseURL=process.env.NODE_ENV === 'production'?'http://47.110.75.177:8080/io2/equipment':'http://47.110.75.177:8080/io2/equipment'
 
-
-
+Axios.defaults.baseURL='http://47.110.75.177:8080/io2/equipment/'
 new Vue({
   router,
   store,

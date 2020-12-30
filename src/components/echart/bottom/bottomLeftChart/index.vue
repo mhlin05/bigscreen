@@ -3,10 +3,10 @@
     <div>
       <Chart
         :cdata="cdata"
-        @getdata1="getData_as_index('/data/1')"
-        @getdata2="getData_as_index('/data/2')"
-        @getdata3="getData_as_index('/data/7')"
-        @getdata4="getData_as_index('/data/8')"
+        @getdata1="getData_as_index('/data1/1')"
+        @getdata2="getData_as_index('/data1/2')"
+        @getdata3="getData_as_index('/data1/7')"
+        @getdata4="getData_as_index('/data1/8')"
         @change_as_temperature="changeData_toTemperature"
         @change_as_humidity="changeData_toHumidity"
       />
@@ -47,7 +47,7 @@ export default {
   async created() {
     //初始化
     //默认先显示第一个电厂的温度数据
-    await this.getData_as_index("/data/1");
+    await this.getData_as_index("/data1/1");
     this.setLegendData();
     this.setTemperatureData();
     this.selectType();
@@ -59,7 +59,8 @@ export default {
       //获取index电厂的数据
       const { data } = await this.$axios.get(index);
       this.$set(this.cdata, "Origanial_Data", data);
-
+      console.log(data)
+      // console.log(JSON.parse(data))
       //如果现在类型是温度类型
       if (this.cdata.type){
         this.setLegendData();
@@ -78,7 +79,7 @@ export default {
       } else {
         this.cdata.type = true;
         this.selectType();
-        await this.getData_as_index("1");
+        await this.getData_as_index("data1/1");
       }
     },
     //将目前的数据改为湿度数据
@@ -91,7 +92,7 @@ export default {
         this.cdata.type = false;
         //alert(this.type);
         this.selectType();
-        await this.getData_as_index("1");
+        await this.getData_as_index("data1/1");
       }
     },
     //设置y轴的坐标名
@@ -126,14 +127,13 @@ export default {
       var time_data = new Array(10);
 
       for (let index = 0; index < length1; index++) {
-        //创建数组
-
+        //创建二维数组存放温度
         tempdata[index] = new Array(10);
-
+        var ob_data;
         for (let i = 0; i < length2; i++) {
-          tempdata[index][i] = this.cdata.Origanial_Data[index].data[
-            i
-          ].temperature;
+          ob_data = JSON.parse(this.cdata.Origanial_Data[index].data[i].data);
+          tempdata[index][i] = ob_data.temperature
+          // "{"temperature":"5.8","humidity":"53"}"
           //设置x轴的时间顺序
           time_data[i] = this.cdata.Origanial_Data[index].data[i].time;
         }
@@ -157,10 +157,10 @@ export default {
       for (let index = 0; index < length1; index++) {
         //创建数组
         tempdata[index] = new Array(10);
+        var ob_data;
         for (let i = 0; i < length2; i++) {
-          tempdata[index][i] = this.cdata.Origanial_Data[index].data[
-            i
-          ].humidity;
+          ob_data = JSON.parse(this.cdata.Origanial_Data[index].data[i].data);
+          tempdata[index][i] = ob_data.humidity;
           //设置x轴的时间顺序
           time_data[i] = this.cdata.Origanial_Data[index].data[i].time;
         }
