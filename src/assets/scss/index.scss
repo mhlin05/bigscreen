@@ -20,7 +20,7 @@
       background-repeat: no-repeat;
 
       .title-text {
-        font-size: 0.3rem;
+        font-size: 0.43rem;
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -38,7 +38,7 @@
     // 平行四边形
     .react-left {
       cursor: pointer;
-      font-size: 0.225rem;
+      font-size: 0.21rem;
       width: 3.75rem;
       height: 0.625rem;
       line-height: 0.625rem;
@@ -58,12 +58,13 @@
       .text {
         display: inline-block;
         transform: skewX(45deg);
+        letter-spacing:5px;
       }
     }
 
     .react-right {
       cursor: pointer;
-      font-size: 0.225rem;
+      font-size: 0.21rem;
       width: 3.75rem;
       height: 0.625rem;
       line-height: 0.625rem;
@@ -83,6 +84,7 @@
       .text {
         display: inline-block;
         transform: skewX(-45deg);
+        letter-spacing:5px;
       }
     }
 
@@ -90,18 +92,24 @@
       margin-top: 0.2rem;
       display: flex;
       flex-direction: column;
+      
+      //滚动条区域的布局
+      .content-box1 {
+        display: grid;
+        grid-template-columns: .5fr 8fr .5fr;
+      }
 
       //下方区域的布局
       .content-box {
         display: grid;
-        grid-template-columns: 2fr 3fr 5fr 3fr 2fr;
+        grid-template-columns: 3fr 8fr 3fr;
       }
 
       // 底部数据
       .bototm-box {
         margin-top: 0.125rem;
         display: grid;
-        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: 2.2fr 8fr 2.2fr;
       }
     }
   }
