@@ -4,7 +4,7 @@
         <div class="notice-card-wrapper">
           <div class="message">
             <div class="inner-container">
-              <span style="font-size:20px" v-html="notice"></span>
+              <span style="font-size:14px" v-html="notice"></span>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ export default {
 <style lang="scss" scoped>
 #gundongtiao {
   padding: 0.01rem;
-  height: 1.025rem;
+  height: .625rem;
   min-width: 4.75rem;
   border-radius: 0.6rem;
   .body-box {
@@ -40,9 +40,9 @@ export default {
 .notice-card-wrapper {
   .inner-container {
     margin-left: 100%; // 把文字弄出可见区域
-    margin-top: 1%;
+    margin-top: .1%;
     width: 200%;
-    animation: myMove 8s linear infinite; // 重点，定义动画
+    animation: myMove 15s linear infinite; // 重点，定义动画
     animation-fill-mode: forwards;
   }
     /*文字无缝滚动*/

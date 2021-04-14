@@ -17,10 +17,8 @@ export default {
     var player =  new EZUIKit.EZUIKitPlayer({
       autoplay: true,
       id: "video-container",
-      // accessToken:"at.5eust80k28pq5i8w7blbhl8e4vft3bwq-7slhtrs9dm-1fhprbb-tafuv0h5j",
-      accessToken: "at.36q24tpl8zw07w9l494js81ibxh9y9e8-86s6gy4il2-1hpo2zf-cpj4j7ohx",
-      // url: "ezopen://open.ys7.com/203751922/1.live",
-      url: "https://flvopen.ys7.com:9188/openlive/6e0b2be040a943489ef0b9bb344b96b8.hd.flv",
+      accessToken:"at.7enft1t56b7hp7h535nxj4ja8p2gb0uo-1laepksji4-0djx3vq-cueoz6e1k",
+      url: "ezopen://open.ys7.com/E99632751/1.live",
       template: "simple", // simple - 极简版;standard-标准版;security - 安防版(预览回放);voice-语音版；
       // 视频上方头部控件
       //header: ["capturePicture", "save", "zoom"], // 如果templete参数不为simple,该字段将被覆盖

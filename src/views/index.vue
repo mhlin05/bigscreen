@@ -69,28 +69,17 @@
           <div class="content-box">
             <div>
               <dv-border-box-12>
-                <!-- <centerLeft1 /> -->
                 <dapengxuanze />
               </dv-border-box-12>
             </div>
             <div>
               <dv-border-box-1>
-                <!-- <centerLeft2 /> -->
                 <jiankongzhanshi />
               </dv-border-box-1>
             </div>
-            <!-- 中间 -->
-            <!-- <div>
-              <center />
-            </div> -->
-            <!-- 中间 -->
-            <!-- <div>
-              <centerRight2 />
-            </div> -->
             <div>
               <dv-border-box-12>
-                <!-- <centerRight1 /> -->
-                <chuanganqixinxi />
+                <caijijiedianxinxi />
               </dv-border-box-12>
             </div>
           </div>
@@ -101,10 +90,10 @@
               <kongzhianniu />
             </dv-border-box-12>
             <dv-border-box-12>
-              <daidingquyu />
+              <kaiguanzhuangtai />
             </dv-border-box-12>
             <dv-border-box-12>
-              <daidingquyu1 />
+              <dapengxinxi />
             </dv-border-box-12>
           </div>
         </div>
@@ -118,11 +107,11 @@ import axios from 'axios';
 import { formatTime } from '../utils/index.js';
 import gundongtiao from "./gundongtiao";
 import dapengxuanze from "./dapengxuanze";
-import daidingquyu from "./daidingquyu";
-import chuanganqixinxi from "./chuanganqixinxi";
+import kaiguanzhuangtai from "./kaiguanzhuangtai";
+import caijijiedianxinxi from "./caijijiedianxinxi";
 import jiankongzhanshi from "./jiankongzhanshi";
 import kongzhianniu from "./kongzhianniu";
-import daidingquyu1 from "./daidingquyu1";
+import dapengxinxi from "./dapengxinxi";
 export default {
   data () {
     return {
@@ -136,12 +125,12 @@ export default {
   },
   components: {
     jiankongzhanshi,
-    chuanganqixinxi,
+    caijijiedianxinxi,
     dapengxuanze,
-    daidingquyu,
+    kaiguanzhuangtai,
     gundongtiao,
     kongzhianniu,
-    daidingquyu1
+    dapengxinxi
   },
   mounted () {
     this.timeFn();

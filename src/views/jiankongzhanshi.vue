@@ -2,12 +2,9 @@
   <div id="jiankongzhanshi">
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
-        <span style="color:#5cd9e8">
-          <icon name="video"></icon>
-        </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">监控内容</span>
-          <dv-decoration-1 style="width:1.25rem;height:.25rem; position:relative;top:-.0375rem;" />
+          <el-button type="primary" size="mini">监控页</el-button>
+          <el-button type="primary" size="mini">平面页</el-button>
         </div>
       </div>
       <EZUIKitJs />
@@ -41,6 +38,12 @@ export default {
   }
   .text {
     color: #ffffff;
+  }
+  .el-button {
+  color: #FFF;
+  background-color: rgba(45, 63, 129, 0.5);
+  border-color: #08175a;
+  margin-left: .3rem;
   }
 }
 </style>

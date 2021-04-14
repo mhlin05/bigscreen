@@ -3,7 +3,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import dataV from '@jiaminghi/data-view';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(dataV);
+Vue.use(ElementUI);
 
 // 按需引入按钮组件
 import { Button } from "ant-design-vue";
@@ -18,6 +21,8 @@ import 'vue-awesome/icons/chart-pie.js';
 import 'vue-awesome/icons/chart-line.js';
 import 'vue-awesome/icons/align-left.js';
 import 'vue-awesome/icons/video.js';
+import 'vue-awesome/icons/cog.js';
+import 'vue-awesome/icons/tachometer-alt.js';
 
 // 全局注册图标
 Vue.component('icon', Icon);

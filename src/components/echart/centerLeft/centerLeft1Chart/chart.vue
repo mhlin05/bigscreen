@@ -3,8 +3,8 @@
     <Echart
       :options="options"
       id="centreLeft1Chart"
-      height="2.75rem"
-      width="3.25rem"
+      height="1.75rem"
+      width="1.25rem"
     ></Echart>
   </div>
 </template>
