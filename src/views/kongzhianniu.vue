@@ -7,21 +7,43 @@
         </span>
         <div class="d-flex">
           <span class="fs-xl text mx-2">选择监控</span>
-          <dv-decoration-3 style="width:2.75rem;height:.25rem; position:relative;top:-.0375rem;" />
+          <dv-decoration-3
+            style="width:2.75rem;height:.25rem; position:relative;top:-.0375rem;"
+          />
         </div>
       </div>
-      <el-button-group>
-        <el-button type="primary">1</el-button>
-        <el-button type="primary">2</el-button>
-        <el-button type="primary">3</el-button>
-      </el-button-group>
-      <el-button-group>
-        <el-button type="primary">4</el-button>
-        <el-button type="primary">5</el-button>
-        <el-button type="primary">6</el-button>
-      </el-button-group>
-      <div class="d-flex jc-center">
+      <div>
+        <el-button-group>
+          <el-button type="primary" size="mini" @click="buttonClick(1)"
+            >1</el-button
+          >
+          <el-button type="primary" size="mini" @click="buttonClick(2)"
+            >2</el-button
+          >
+          <el-button type="primary" size="mini" @click="buttonClick(3)"
+            >3</el-button
+          >
+          <el-button type="primary" size="mini" @click="buttonClick(4)"
+            >4</el-button
+          >
+        </el-button-group>
+        <el-button-group>
+          <el-button type="primary" size="mini" @click="buttonClick(5)"
+            >5</el-button
+          >
+          <el-button type="primary" size="mini" @click="buttonClick(6)"
+            >6</el-button
+          >
+          <el-button type="primary" size="mini" @click="buttonClick(7)"
+            >7</el-button
+          >
+          <el-button type="primary" size="mini" @click="buttonClick(8)"
+            >8</el-button
+          ></el-button-group
+        >
       </div>
+
+      <div class="d-flex jc-center"></div>
     </div>
   </div>
 </template>
@@ -29,17 +51,16 @@
 <script>
 export default {
   data() {
-    return {
-    };
+    return {}
   },
-  components: { 
-  },
-  mounted() {
-  },
+  components: {},
+  mounted() {},
   methods: {
-
-  }
-};
+    buttonClick(monitorNum) {
+      this.$store.dispatch('setMonitor', monitorNum)
+    },
+  },
+}
 </script>
 
 <style lang="scss">
@@ -56,14 +77,14 @@ li {
     border-radius: 0.125rem;
   }
   .el-button {
-  color: #FFF;
-  background-color: rgba(26, 44, 109, 0.5);
-  border-color: #08175a;
-  margin-left: .3rem;
-  margin-top: .2rem;
-  font-size: 16px;
-  width: 1.1rem;
-  border-color: #053169;
+    color: #fff;
+    background-color: rgba(26, 44, 109, 0.5);
+    border-color: #08175a;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
+    font-size: 16px;
+    width: 0.8rem;
+    border-color: #053169;
   }
 }
 </style>

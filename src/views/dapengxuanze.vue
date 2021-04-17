@@ -7,10 +7,17 @@
         </span>
         <div class="d-flex">
           <span class="fs-xl text mx-2">大棚选择</span>
-          <dv-decoration-3 style="width:2.65rem;height:.25rem; position:relative;top:-.0375rem;" />
+          <dv-decoration-3
+            style="width:2.65rem;height:.25rem; position:relative;top:-.0375rem;"
+          />
         </div>
       </div>
-      <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick" :accordion="true"></el-tree>
+      <el-tree
+        :data="data"
+        :props="defaultProps"
+        @node-click="handleNodeClick"
+        :accordion="true"
+      ></el-tree>
     </div>
   </div>
 </template>
@@ -19,65 +26,94 @@
 export default {
   data() {
     return {
-      data: [{
-        label: '一号大棚',
-        children: [{
-          label: '大豆    预计亩产:100吨',
-        }, {
-          label: '番茄    预计亩产:100吨',
-        }, {
-          label: '黄瓜    预计亩产:100吨',
-        },{
-          label: '大豆    预计亩产:100吨',
-        }, {
-          label: '番茄    预计亩产:100吨',
-        }, {
-          label: '黄瓜    预计亩产:100吨',
-        },{
-          label: '大豆    预计亩产:100吨',
-        }, {
-          label: '番茄    预计亩产:100吨',
-        }, {
-          label: '黄瓜    预计亩产:100吨',
-        }]
-      }, {
-        label: '二号大棚',
-        children: [{
-          label: '大豆    预计亩产:100吨',
-        }, {
-          label: '番茄    预计亩产:100吨',
-        }, {
-          label: '黄瓜    预计亩产:100吨',
-        },{
-          label: '大豆    预计亩产:100吨',
-        }, {
-          label: '番茄    预计亩产:100吨',
-        }, {
-          label: '黄瓜    预计亩产:100吨',
-        },{
-          label: '大豆    预计亩产:100吨',
-        }, {
-          label: '番茄    预计亩产:100吨',
-        }, {
-          label: '黄瓜    预计亩产:100吨',
-        }]
-      }],
+      data: [
+        {
+          label: '一号大棚',
+          children: [
+            {
+              label: '大豆    预计亩产:100吨',
+            },
+            {
+              label: '番茄    预计亩产:100吨',
+            },
+            {
+              label: '黄瓜    预计亩产:100吨',
+            },
+            {
+              label: '大豆    预计亩产:100吨',
+            },
+            {
+              label: '番茄    预计亩产:100吨',
+            },
+            {
+              label: '黄瓜    预计亩产:100吨',
+            },
+            {
+              label: '大豆    预计亩产:100吨',
+            },
+            {
+              label: '番茄    预计亩产:100吨',
+            },
+            {
+              label: '黄瓜    预计亩产:100吨',
+            },
+          ],
+        },
+        {
+          label: '二号大棚',
+          children: [
+            {
+              label: '大豆    预计亩产:100吨',
+            },
+            {
+              label: '番茄    预计亩产:100吨',
+            },
+            {
+              label: '黄瓜    预计亩产:100吨',
+            },
+            {
+              label: '大豆    预计亩产:100吨',
+            },
+            {
+              label: '番茄    预计亩产:100吨',
+            },
+            {
+              label: '黄瓜    预计亩产:100吨',
+            },
+            {
+              label: '大豆    预计亩产:100吨',
+            },
+            {
+              label: '番茄    预计亩产:100吨',
+            },
+            {
+              label: '黄瓜    预计亩产:100吨',
+            },
+          ],
+        },
+      ],
       defaultProps: {
         children: 'children',
-        label: 'label'
-      }
-    };
+        label: 'label',
+      },
+    }
   },
-  components: {
-  },
-  mounted() {
-  },
+  components: {},
+  mounted() {},
   methods: {
     handleNodeClick(data) {
-      console.log(data);
-    }
-  }
-};
+      console.log(data)
+      console.log(typeof data.$treeNodeId)
+      // 保存当前选择的大棚号到state中
+      this.$store.dispatch('setHouseNum', data.$treeNodeId)
+      if (data.$treeNodeId === 1) {
+        this.$store.dispatch('setSerial', 'E99632751')
+      } else {
+        this.$store.dispatch('setSerial', 'F04233924')
+      }
+    },
+  },
+}
 </script>
 
 <style lang="scss">
@@ -102,7 +138,7 @@ export default {
     color: white;
   }
   .el-tree {
-    margin-top: .2rem;
+    margin-top: 0.2rem;
     color: rgba(234, 235, 241, 0.6);
     background: transparent;
   }
@@ -110,7 +146,7 @@ export default {
     background-color: #2453a3;
     color: #fff;
   }
-  .el-tree-node__label{
+  .el-tree-node__label {
     font-size: 0.1625rem;
     letter-spacing: 0.0375rem;
   }

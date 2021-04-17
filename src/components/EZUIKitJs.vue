@@ -1,25 +1,86 @@
 <template>
   <div class="hello-ezuikit-js">
-    <div id="video-container" style="width:930px;height:500px;margin-left:20px;margin-top:10px"></div>
+    <div
+      id="video-container"
+      style="width:100%;height:100%;margin-left:20px;margin-top:10px"
+    ></div>
   </div>
 </template>
 
 <script>
-import EZUIKit from "ezuikit-js";
-
+import EZUIKit from 'ezuikit-js'
+import { mapState } from 'vuex'
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
   },
-  mounted: () => {
-    console.group("mounted 组件挂载完毕状态===============》");
-    var player =  new EZUIKit.EZUIKitPlayer({
+  data() {
+    return {
+      player: {},
+    }
+  },
+  computed: {
+    ...mapState({
+      greenHouseNum: (state) => {
+        return state.greenHouseNum
+      },
+      equipmentSerial: (state) => {
+        return state.equipmentSerial
+      },
+      monitorNum: (state) => {
+        return state.monitorNum
+      },
+    }),
+    // monitorUrl:
+    //   'ezopen://open.ys7.com/' +
+    //   this.equipmentSerial +
+    //   '/' +
+    //   this.monitorNum +
+    //   '' +
+    //   '.live',
+  },
+  created() {
+    console.log(this.msg)
+  },
+  watch: {
+    equipmentSerial: function() {
+      this.player.opt.url =
+        'ezopen://open.ys7.com/' +
+        this.equipmentSerial +
+        '/' +
+        this.monitorNum +
+        '.live'
+      this.player.play()
+    },
+    monitorNum: function() {
+      this.player.opt.url =
+        'ezopen://open.ys7.com/' +
+        this.equipmentSerial +
+        '/' +
+        this.monitorNum +
+        '.live'
+      this.player.play()
+    },
+  },
+  mounted() {
+    console.log(this.equipmentSerial)
+    console.log(this.monitorNum)
+    console.group('mounted 组件挂载完毕状态===============》')
+    this.player = new EZUIKit.EZUIKitPlayer({
       autoplay: true,
-      id: "video-container",
-      accessToken:"at.7enft1t56b7hp7h535nxj4ja8p2gb0uo-1laepksji4-0djx3vq-cueoz6e1k",
-      url: "ezopen://open.ys7.com/E99632751/1.live",
-      template: "simple", // simple - 极简版;standard-标准版;security - 安防版(预览回放);voice-语音版；
+      id: 'video-container',
+      accessToken:
+        'at.7enft1t56b7hp7h535nxj4ja8p2gb0uo-1laepksji4-0djx3vq-cueoz6e1k',
+      // url: 'ezopen://open.ys7.com/E99632751/1.live',
+      url:
+        'ezopen://open.ys7.com/' +
+        this.equipmentSerial +
+        '/' +
+        this.monitorNum +
+        '.live',
+      // E99632751/1.live',
+      template: 'simple', // simple - 极简版;standard-标准版;security - 安防版(预览回放);voice-语音版；
       // 视频上方头部控件
       //header: ["capturePicture", "save", "zoom"], // 如果templete参数不为simple,该字段将被覆盖
       //plugin: ['talk'],                       // 加载插件，talk-对讲
@@ -34,12 +95,13 @@ export default {
       // fullScreenCallBack: data => console.log("全屏回调", data),
       // getOSDTimeCallBack: data => console.log("获取OSDTime回调", data),
       width: 910,
-      height: 460
-    });
-    console.log("player",player);
+      height: 460,
+    })
+    console.log('player', this.player)
     // setTimeout(()=>{
     //   player.stop(); // 方法调用示例，10秒后关闭视频
     // },10000)
-  }
-};
+    // this.$nextTick(() => {})
+  },
+}
 </script>
