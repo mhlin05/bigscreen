@@ -1,9 +1,6 @@
 <template>
-  <div class="hello-ezuikit-js">
-    <div
-      id="video-container"
-      style="width:100%;height:100%;margin-left:20px;margin-top:10px"
-    ></div>
+  <div id="hello-ezuikit-js">
+    <!-- <div id="video-container"></div> -->
   </div>
 </template>
 
@@ -94,7 +91,7 @@ export default {
     console.group('mounted 组件挂载完毕状态===============》')
     this.player = new EZUIKit.EZUIKitPlayer({
       autoplay: true,
-      id: 'video-container',
+      id: 'hello-ezuikit-js',
       accessToken: this.token,
       // accessToken:
       //   'at.7enft1t56b7hp7h535nxj4ja8p2gb0uo-1laepksji4-0djx3vq-cueoz6e1k',
@@ -112,7 +109,7 @@ export default {
       //plugin: ['talk'],                       // 加载插件，talk-对讲
       // 视频下方底部控件
       // footer: ["talk", "broadcast", "hd", "fullScreen"], // 如果template参数不为simple,该字段将被覆盖
-      // audio: 1, // 是否默认开启声音 0 - 关闭 1 - 开启
+      audio: 0, // 是否默认开启声音 0 - 关闭 1 - 开启
       // openSoundCallBack: data => console.log("开启声音回调", data),
       // closeSoundCallBack: data => console.log("关闭声音回调", data),
       // startSaveCallBack: data => console.log("开始录像回调", data),
@@ -120,8 +117,8 @@ export default {
       // capturePictureCallBack: data => console.log("截图成功回调", data),
       // fullScreenCallBack: data => console.log("全屏回调", data),
       // getOSDTimeCallBack: data => console.log("获取OSDTime回调", data),
-      width: 910,
-      height: 460,
+      width: 960,
+      height: 540,
     })
     // console.log('player', this.player)
     // setTimeout(()=>{
@@ -131,3 +128,17 @@ export default {
   },
 }
 </script>
+<style scoped>
+/* #playWind {
+  width: 960px;
+  height: 540px;
+}
+#canvas0 {
+  width: 960px;
+  height: 540px;
+} */
+#hello-ezuikit-js {
+  width: 960px;
+  height: 540px;
+}
+</style>
