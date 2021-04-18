@@ -222,13 +222,13 @@ export default {
   .bg-color-black {
     height: 7.8125rem;
     border-radius: 0.525rem;
-    .monitor {
-      display: block;
-      width: 1000px;
-      height: 580px;
-      margin-left: 30px;
-      margin-top: 10px;
-    }
+    // .monitor {
+    //   display: block;
+    //   // width: 1000px;
+    //   // height: 580px;
+    //   margin-left: 30px;
+    //   margin-top: 10px;
+    // }
     .flatPage {
       background-image: url('../assets/flatPage.png');
       width: 87%;
