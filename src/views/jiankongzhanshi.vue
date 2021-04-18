@@ -224,8 +224,8 @@ export default {
     border-radius: 0.525rem;
     // .monitor {
     //   display: block;
-    //   // width: 1000px;
-    //   // height: 580px;
+    //   width: 1000px;
+    //   height: 600px;
     //   margin-left: 30px;
     //   margin-top: 10px;
     // }

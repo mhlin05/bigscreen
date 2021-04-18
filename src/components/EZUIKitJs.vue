@@ -2,7 +2,7 @@
   <div class="hello-ezuikit-js">
     <div
       id="video-container"
-      style="width:1000px;height:600px;margin-left:20px;margin-top:10px;display:block"
+      style="width:800px;height:500px"
     ></div>
   </div>
 </template>
@@ -120,8 +120,8 @@ export default {
       // capturePictureCallBack: data => console.log("截图成功回调", data),
       // fullScreenCallBack: data => console.log("全屏回调", data),
       // getOSDTimeCallBack: data => console.log("获取OSDTime回调", data),
-      width: 960,
-      height: 540,
+      width: 860,
+      height: 400,
     })
     // console.log('player', this.player)
     // setTimeout(()=>{
@@ -131,13 +131,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-/* #playWind {
-  width: 960px;
-  height: 540px;
-}
-#canvas0 {
-  width: 960px;
-  height: 540px;
-} */
-</style>

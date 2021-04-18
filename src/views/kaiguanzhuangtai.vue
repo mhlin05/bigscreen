@@ -496,14 +496,15 @@ export default {
       const uusid1 = this.uusid1
       const uusid2 = this.uusid2
       fetchControlNodeByuusid(uusid1).then(res => {
-        if (res.code === 20000) {
-          this.detailsList1 = res.data
+        if (res.data.code === 20000) {
+          console.log("=====================================")
+          this.detailsList1 = res.data.data
         }
       })
       fetchControlNodeByuusid(uusid2).then(res => {
-        if (res.code === 20000) {
+        if (res.data.code === 20000) {
           console.log(res.data)
-          this.detailsList2 = res.data
+          this.detailsList2 = res.data.data
         }
       })
     },
