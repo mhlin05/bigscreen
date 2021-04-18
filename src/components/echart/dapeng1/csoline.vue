@@ -1,10 +1,12 @@
 <template>
+  <!-- 空气含量 -->
   <div id="main2" style="height:1.55rem; width:4.25rem"></div>
 </template>
 <script>
 const echarts = require('echarts/lib/echarts')
 require('echarts/lib/component/grid')
 require('echarts/lib/chart/line')
+import { mapState } from 'vuex'
 export default {
   data() {
     return {}
@@ -47,7 +49,7 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: ['10:22:30', '10:23:30', '10:24:30', '10:25:30', '10:26:30'],
+          data: this.time,
           axisLabel: {
             show: true,
             textStyle: {
@@ -81,25 +83,25 @@ export default {
           {
             name: 'CO2',
             type: 'line',
-            data: [0.1, 0.3, 0.6, 0.7, 0.4],
+            data: this.co2,
             smooth: true,
           },
           {
             name: 'TVOC',
             type: 'line',
-            data: [0.2, 0.3, 0.4, 0.7, 0.7],
+            data: this.tvoc,
             smooth: true,
           },
           {
             name: 'SO2',
             type: 'line',
-            data: [0.7, 0.4, 0.6, 0.6, 0.8],
+            data: this.so2,
             smooth: true,
           },
           {
             name: 'O2',
             type: 'line',
-            data: [0.3, 0.6, 0.2, 0.7, 0.9],
+            data: this.o2,
             smooth: true,
           },
         ],
@@ -115,6 +117,32 @@ export default {
       if (!this.clientWidth) return
       let fontSize = 100 * (this.clientWidth / 1920)
       return res * fontSize
+    },
+  },
+  computed: {
+    ...mapState({
+      co2: (state) => {
+        return state.gas.co2
+      },
+      tvoc: (state) => {
+        return state.gas.tvoc
+      },
+      so2: (state) => {
+        return state.gas.so2
+      },
+      o2: (state) => {
+        return state.gas.o2
+      },
+      time: (state) => {
+        return state.gas.time
+      },
+    }),
+  },
+  watch: {
+    co2: {
+      handler() {
+        this.drawLine()
+      },
     },
   },
 }

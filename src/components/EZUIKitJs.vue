@@ -10,26 +10,53 @@
 <script>
 import EZUIKit from 'ezuikit-js'
 import { mapState } from 'vuex'
+// import Request from '@/utils/request.js'
 export default {
-  name: 'HelloWorld',
+  name: 'EZUIKit',
   props: {
     msg: String,
   },
   data() {
     return {
       player: {},
+      token: '',
     }
+  },
+  methods: {
+    async getToken() {
+      // console.log(111)
+      // const data1 = Request({
+      //   url: 'api/accessToken/getToken',
+      //   method: 'get',
+      // })
+      // console.log(data1)
+      // const { data: res } = await Request({
+      //   method: 'post',
+      //   params: {
+      //     appKey: '75f5daa8e74f4114b3a12d3a68333261',
+      //     appSecret: '95f3816d37eb98a00b9ca910741f6119',
+      //   },
+      //   // Content-Type: application/x-www-form-urlencoded
+      // })
+      // console.log(res)
+      // this.token = res.data.accessToken
+      this.token =
+        'at.40bitnc986ajj2mx4qvtspti5imnrua8-60su0dc1wo-0syulrv-ekxkk43h6'
+    },
+  },
+  created() {
+    this.getToken()
   },
   computed: {
     ...mapState({
       greenHouseNum: (state) => {
-        return state.greenHouseNum
+        return state.monitor.greenHouseNum
       },
       equipmentSerial: (state) => {
-        return state.equipmentSerial
+        return state.monitor.equipmentSerial
       },
       monitorNum: (state) => {
-        return state.monitorNum
+        return state.monitor.monitorNum
       },
     }),
     // monitorUrl:
@@ -40,9 +67,7 @@ export default {
     //   '' +
     //   '.live',
   },
-  created() {
-    console.log(this.msg)
-  },
+
   watch: {
     equipmentSerial: function() {
       this.player.opt.url =
@@ -70,8 +95,9 @@ export default {
     this.player = new EZUIKit.EZUIKitPlayer({
       autoplay: true,
       id: 'video-container',
-      accessToken:
-        'at.7enft1t56b7hp7h535nxj4ja8p2gb0uo-1laepksji4-0djx3vq-cueoz6e1k',
+      accessToken: this.token,
+      // accessToken:
+      //   'at.7enft1t56b7hp7h535nxj4ja8p2gb0uo-1laepksji4-0djx3vq-cueoz6e1k',
       // url: 'ezopen://open.ys7.com/E99632751/1.live',
       url:
         'ezopen://open.ys7.com/' +
@@ -97,7 +123,7 @@ export default {
       width: 910,
       height: 460,
     })
-    console.log('player', this.player)
+    // console.log('player', this.player)
     // setTimeout(()=>{
     //   player.stop(); // 方法调用示例，10秒后关闭视频
     // },10000)

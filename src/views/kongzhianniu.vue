@@ -56,7 +56,7 @@ export default {
   components: {},
   mounted() {},
   methods: {
-    buttonClick(monitorNum) {
+    async buttonClick(monitorNum) {
       this.$store.dispatch('setMonitor', monitorNum)
     },
   },

@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { getHMS } from '@/utils/index.js'
+import Request from '@/utils/request.js'
 export default {
   data() {
     return {
@@ -101,14 +103,103 @@ export default {
   components: {},
   mounted() {},
   methods: {
+    setOriginData() {
+      // 温度
+      let soilTemp1 = [31, 22, 23, 34, 25]
+      let skyTemp1 = [31, 32, 33, 34, 35]
+      let time1 = ['10:22:30', '10:23:30', '10:24:30', '10:25:30', '10:26:30']
+      this.$store.dispatch('tetline/setSoilTemp', soilTemp1)
+      this.$store.dispatch('tetline/setSkyTemp', skyTemp1)
+      this.$store.dispatch('tetline/setTime', time1)
+      // 湿度
+      let skyHumidity1 = [30, 40, 50, 90, 35]
+      let soilHumidity1 = [31, 22, 3, 84, 25]
+      this.$store.dispatch('humidity/setSoilHumidity', soilHumidity1)
+      this.$store.dispatch('humidity/setSkyHumidity', skyHumidity1)
+      this.$store.dispatch('humidity/setTime', time1)
+      // pm
+      let pm25 = [1, 22, 83, 44, 25]
+      let pm10 = [20, 30, 33, 10, 4]
+      this.$store.dispatch('pm/setPm10', pm10)
+      this.$store.dispatch('pm/setPm2_5', pm25)
+      this.$store.dispatch('pm/setTime', time1)
+      // 空气含量
+      let co2 = [0.1, 0.3, 0.6, 0.7, 0.4]
+      let tvoc = [0.2, 0.3, 0.4, 0.7, 0.7]
+      let so2 = [0.7, 0.4, 0.6, 0.6, 0.8]
+      let o2 = [0.3, 0.6, 0.2, 0.7, 0.9]
+      this.$store.dispatch('gas/setCO2', co2)
+      this.$store.dispatch('gas/setTVOC', tvoc)
+      this.$store.dispatch('gas/setSO2', so2)
+      this.$store.dispatch('gas/setO2', o2)
+      this.$store.dispatch('gas/setTime', time1)
+    },
+    async getChartsData() {
+      // 'http://116.62.9.209:8080/testBackend/api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=1'
+      // 先获取最新一页是哪页
+      const { data: res } = await Request({
+        url:
+          'api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=1000',
+        method: 'get',
+      })
+      if (res.code === 20000) {
+        console.log('res1', res)
+        let soilTemp = []
+        let skyTemp = []
+        let crtTime = []
+        let soilHumidity = []
+        let skyHumidity = []
+        let pm10 = []
+        let pm2_5 = []
+        let co2 = []
+        let tvoc = []
+        let so2 = []
+        let o2 = []
+        // 循环设置数据
+        for (let index = 0; index < 5; index++) {
+          soilTemp.push(res.data.content[index].et)
+          skyTemp.push(res.data.content[index].t)
+          crtTime.push(getHMS(res.data.content[index].createTime))
+          soilHumidity.push(res.data.content[index].erh)
+          skyHumidity.push(res.data.content[index].rh)
+          pm2_5.push(res.data.content[index].pm25)
+          pm10.push(res.data.content[index].pm10)
+          co2.push(res.data.content[index].co2)
+          tvoc.push(res.data.content[index].tvoc)
+          so2.push(res.data.content[index].so2)
+          o2.push(res.data.content[index].o2)
+        }
+        // 设置温度
+        this.$store.dispatch('tetline/setSoilTemp', soilTemp)
+        this.$store.dispatch('tetline/setSkyTemp', skyTemp)
+        this.$store.dispatch('tetline/setTime', crtTime)
+        // 设置湿度
+        this.$store.dispatch('humidity/setSkyHumidity', skyHumidity)
+        this.$store.dispatch('humidity/setSoilHumidity', soilHumidity)
+        this.$store.dispatch('humidity/setTime', crtTime)
+        // 设置pm
+        this.$store.dispatch('pm/setPm10', pm10)
+        this.$store.dispatch('pm/setPm2_5', pm2_5)
+        this.$store.dispatch('pm/setTime', crtTime)
+        // 设置空气含量
+        this.$store.dispatch('gas/setCO2', co2)
+        this.$store.dispatch('gas/setTVOC', tvoc)
+        this.$store.dispatch('gas/setSO2', so2)
+        this.$store.dispatch('gas/setO2', o2)
+        this.$store.dispatch('gas/setTime', crtTime)
+      }
+    },
     handleNodeClick(data) {
       console.log(data)
       console.log(typeof data.$treeNodeId)
       // 保存当前选择的大棚号到state中
       this.$store.dispatch('setHouseNum', data.$treeNodeId)
       if (data.$treeNodeId === 1) {
+        // 原始数据
+        this.setOriginData()
         this.$store.dispatch('setSerial', 'E99632751')
       } else {
+        this.getChartsData()
         this.$store.dispatch('setSerial', 'F04233924')
       }
     },
