@@ -13,7 +13,7 @@
       </div>
       <!-- 监控页 -->
       <!-- class="monitor" -->
-      <div v-show="showStatus === 1">
+      <div v-show="showStatus === 1" class="monitor">
         <EZUIKitJs />
       </div>
       <!-- 平面页 -->
@@ -223,6 +223,7 @@ export default {
     height: 7.8125rem;
     border-radius: 0.525rem;
     .monitor {
+      display: block;
       width: 1000px;
       height: 580px;
       margin-left: 30px;

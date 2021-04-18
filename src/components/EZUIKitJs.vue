@@ -137,8 +137,4 @@ export default {
   width: 960px;
   height: 540px;
 } */
-#hello-ezuikit-js {
-  width: 960px;
-  height: 540px;
-}
 </style>
