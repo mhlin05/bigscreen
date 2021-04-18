@@ -62,6 +62,7 @@ export default {
           },
         },
         yAxis: {
+          scale: true,
           type: 'value',
           axisLabel: {
             formatter: '{value} ug/m3',

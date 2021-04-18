@@ -74,6 +74,7 @@ export default {
           },
         },
         yAxis: {
+          scale: true,
           type: 'value',
           axisLabel: {
             formatter: '{value} °C',

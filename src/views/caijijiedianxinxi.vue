@@ -7,7 +7,9 @@
         </span>
         <div class="d-flex">
           <span class="fs-xl text mx-2">采集节点信息</span>
-          <dv-decoration-6 style="width:2.25rem;height:.25rem; position:relative;top:-.0375rem;" />
+          <dv-decoration-6
+            style="width:2.25rem;height:.25rem; position:relative;top:-.0375rem;"
+          />
         </div>
       </div>
       <div class="d-flex jc-center" style=" margin-top: 0;">
@@ -24,17 +26,17 @@
       </div>
       <div class="other">
         <el-row :gutter="10">
-          <el-col :span="11" :offset="1">大气压力:{{hpa}}hPa</el-col>
-          <el-col :span="11" :offset="1">光照度:{{lux}}</el-col>
+          <el-col :span="11" :offset="1">大气压力:{{ hpa }}hPa</el-col>
+          <el-col :span="11" :offset="1">光照度:{{ lux }}</el-col>
         </el-row>
         <el-row :gutter="10">
-          <el-col :span="11" :offset="1">土壤pH:{{eph}}</el-col>
-          <el-col :span="11" :offset="1">土壤导电率:{{eec}}%</el-col>
+          <el-col :span="11" :offset="1">土壤pH:{{ eph }}</el-col>
+          <el-col :span="11" :offset="1">土壤导电率:{{ eec }}%</el-col>
         </el-row>
         <el-row :gutter="10">
-          <el-col :span="7" :offset="1">E_N: {{en}}</el-col>
-          <el-col :span="8">E_P: {{ep}}</el-col>
-          <el-col :span="8">E_K: {{ek}}</el-col>
+          <el-col :span="7" :offset="1">E_N: {{ en }}</el-col>
+          <el-col :span="8">E_P: {{ ep }}</el-col>
+          <el-col :span="8">E_K: {{ ek }}</el-col>
         </el-row>
       </div>
     </div>
@@ -42,31 +44,79 @@
 </template>
 
 <script>
-import tetline from "@/components/echart/dapeng1/tetline";
-import rherhline from "@/components/echart/dapeng1/rherhline";
-import pmline from "@/components/echart/dapeng1/pmline";
-import csoline from "@/components/echart/dapeng1/csoline";
+import { mapState } from 'vuex'
+import Request from '@/utils/request.js'
+import tetline from '@/components/echart/dapeng1/tetline'
+import rherhline from '@/components/echart/dapeng1/rherhline'
+import pmline from '@/components/echart/dapeng1/pmline'
+import csoline from '@/components/echart/dapeng1/csoline'
 export default {
+  async created() {
+    const { data: res } = await Request({
+      url:
+        'api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=300',
+      method: 'get',
+    })
+    let hpa = res.data.content[0].hpa
+    let lux = res.data.content[0].lux
+    let eph = res.data.content[0].eph
+    let eec = res.data.content[0].eec
+    let ek = res.data.content[0].ek
+    let en = res.data.content[0].en
+    let ep = res.data.content[0].ep
+    this.$store.dispatch('others/setHPA', Math.floor(hpa))
+    this.$store.dispatch('others/setLUX', lux)
+    this.$store.dispatch('others/setEPH', eph)
+    this.$store.dispatch('others/setEEC', eec)
+    this.$store.dispatch('others/setEK', ek)
+    this.$store.dispatch('others/setEN', en)
+    this.$store.dispatch('others/setEP', ep)
+  },
+  computed: {
+    ...mapState({
+      hpa: (state) => {
+        return state.others.hpa
+      },
+      lux: (state) => {
+        return state.others.lux
+      },
+      eph: (state) => {
+        return state.others.eph
+      },
+      eec: (state) => {
+        return state.others.eec
+      },
+      en: (state) => {
+        return state.others.en
+      },
+      ep: (state) => {
+        return state.others.ep
+      },
+      ek: (state) => {
+        return state.others.ek
+      },
+    }),
+  },
   data() {
     return {
-      hpa:1.1,
-      lux: 2,
-      eph: 5.5,
-      eec: 60,
-      en: 1,
-      ep: 2,
-      ek: 1
-    };
+      // hpa: 1.1,
+      // lux: 2,
+      // eph: 5.5,
+      // eec: 60,
+      // en: 1,
+      // ep: 2,
+      // ek: 1,
+    }
   },
   components: {
     tetline,
     rherhline,
     pmline,
-    csoline
+    csoline,
   },
   mounted() {},
-  methods: {}
-};
+  methods: {},
+}
 </script>
 
 <style lang="scss">
@@ -87,8 +137,8 @@ export default {
     overflow: hidden;
   }
   .other {
-    margin-top: .1rem;
-    margin-left: .3rem;
+    margin-top: 0.1rem;
+    margin-left: 0.3rem;
     font-size: 0.175rem;
     letter-spacing: 0.025rem;
   }

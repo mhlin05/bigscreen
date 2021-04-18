@@ -103,7 +103,7 @@ export default {
   components: {},
   mounted() {},
   methods: {
-    setOriginData() {
+    async setOriginData() {
       // 温度
       let soilTemp1 = [31, 22, 23, 34, 25]
       let skyTemp1 = [31, 32, 33, 34, 35]
@@ -133,29 +133,65 @@ export default {
       this.$store.dispatch('gas/setSO2', so2)
       this.$store.dispatch('gas/setO2', o2)
       this.$store.dispatch('gas/setTime', time1)
+      // 其他
+      const { data: res } = await Request({
+        url:
+          'api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=300',
+        method: 'get',
+      })
+      let hpa = res.data.content[0].hpa
+      let lux = res.data.content[0].lux
+      let eph = res.data.content[0].eph
+      let eec = res.data.content[0].eec
+      let ek = res.data.content[0].ek
+      let en = res.data.content[0].en
+      let ep = res.data.content[0].ep
+      this.$store.dispatch('others/setHPA', Math.floor(hpa))
+      this.$store.dispatch('others/setLUX', lux)
+      this.$store.dispatch('others/setEPH', eph)
+      this.$store.dispatch('others/setEEC', eec)
+      this.$store.dispatch('others/setEK', ek)
+      this.$store.dispatch('others/setEN', en)
+      this.$store.dispatch('others/setEP', ep)
     },
     async getChartsData() {
       // 'http://116.62.9.209:8080/testBackend/api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=1'
       // 先获取最新一页是哪页
+
+      let soilTemp = []
+      let skyTemp = []
+      let crtTime = []
+      let soilHumidity = []
+      let skyHumidity = []
+      let pm10 = []
+      let pm2_5 = []
+      let co2 = []
+      let tvoc = []
+      let so2 = []
+      let o2 = []
       const { data: res } = await Request({
         url:
-          'api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=1000',
+          'api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=400',
         method: 'get',
       })
       if (res.code === 20000) {
-        console.log('res1', res)
-        let soilTemp = []
-        let skyTemp = []
-        let crtTime = []
-        let soilHumidity = []
-        let skyHumidity = []
-        let pm10 = []
-        let pm2_5 = []
-        let co2 = []
-        let tvoc = []
-        let so2 = []
-        let o2 = []
-        // 循环设置数据
+        // 其他数据
+        let hpa = res.data.content[0].hpa
+        let lux = res.data.content[0].lux
+        let eph = res.data.content[0].eph
+        let eec = res.data.content[0].eec
+        let ek = res.data.content[0].ek
+        let en = res.data.content[0].en
+        let ep = res.data.content[0].ep
+        this.$store.dispatch('others/setHPA', Math.floor(hpa))
+        this.$store.dispatch('others/setLUX', lux)
+        this.$store.dispatch('others/setEPH', eph)
+        this.$store.dispatch('others/setEEC', eec)
+        this.$store.dispatch('others/setEK', ek)
+        this.$store.dispatch('others/setEN', en)
+        this.$store.dispatch('others/setEP', ep)
+
+        console.log(res.data)
         for (let index = 0; index < 5; index++) {
           soilTemp.push(res.data.content[index].et)
           skyTemp.push(res.data.content[index].t)
