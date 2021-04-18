@@ -1,6 +1,9 @@
 <template>
-  <div id="hello-ezuikit-js">
-    <!-- <div id="video-container"></div> -->
+  <div class="hello-ezuikit-js">
+    <div
+      id="video-container"
+      style="width:1000px;height:600px;margin-left:20px;margin-top:10px;display:block"
+    ></div>
   </div>
 </template>
 
@@ -91,7 +94,7 @@ export default {
     console.group('mounted 组件挂载完毕状态===============》')
     this.player = new EZUIKit.EZUIKitPlayer({
       autoplay: true,
-      id: 'hello-ezuikit-js',
+      id: 'video-container',
       accessToken: this.token,
       // accessToken:
       //   'at.7enft1t56b7hp7h535nxj4ja8p2gb0uo-1laepksji4-0djx3vq-cueoz6e1k',
