@@ -25,7 +25,7 @@
                         v-model="detailsList1.scaFanA" 
                         active-value="1"
                         inactive-value="0"
-
+                        @change="handleSwitch($event,'scaFanA')"
                       />
                     </el-tooltip>
                   </div>
@@ -36,7 +36,9 @@
                       <el-switch 
                         v-model="detailsList1.scaFanB" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'scaFanB')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -46,7 +48,9 @@
                       <el-switch 
                         v-model="detailsList1.cirFan" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'cirFan')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -56,7 +60,9 @@
                       <el-switch 
                         v-model="detailsList1.pump" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'pump')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -68,7 +74,9 @@
                       <el-switch 
                         v-model="detailsList1.inShade" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'inShade')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -78,7 +86,9 @@
                       <el-switch 
                         v-model="detailsList1.midShade" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'midShade')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -88,7 +98,9 @@
                       <el-switch 
                         v-model="detailsList1.outShade" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'outShade')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -112,7 +124,9 @@
                       <el-switch 
                         v-model="detailsList1.ewarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'ewarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -122,7 +136,9 @@
                       <el-switch 
                         v-model="detailsList1.wwarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'wwarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -132,7 +148,9 @@
                       <el-switch 
                         v-model="detailsList1.nwarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'nwarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -142,7 +160,9 @@
                       <el-switch 
                         v-model="detailsList1.swarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'swarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -154,7 +174,9 @@
                       <el-switch 
                         v-model="detailsList1.efilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'efilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -164,7 +186,9 @@
                       <el-switch 
                         v-model="detailsList1.wfilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'wfilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -174,7 +198,9 @@
                       <el-switch 
                         v-model="detailsList1.nfilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'nfilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -184,7 +210,9 @@
                       <el-switch 
                         v-model="detailsList1.sfilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch($event,'sfilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -204,7 +232,9 @@
                       <el-switch 
                         v-model="detailsList2.scaFanA" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'scaFanA')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -214,7 +244,9 @@
                       <el-switch 
                         v-model="detailsList2.scaFanB" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'scaFanB')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -224,7 +256,9 @@
                       <el-switch 
                         v-model="detailsList2.cirFan" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'scaFanB')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -234,7 +268,9 @@
                       <el-switch 
                         v-model="detailsList2.pump" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'pump')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -246,7 +282,9 @@
                       <el-switch 
                         v-model="detailsList2.inShade" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'inShade')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -256,7 +294,9 @@
                       <el-switch 
                         v-model="detailsList2.midShade" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'midShade')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -266,7 +306,9 @@
                       <el-switch 
                         v-model="detailsList2.outShade" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'outShade')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -276,7 +318,9 @@
                       <el-switch 
                         v-model="detailsList2.window" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'window')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -288,7 +332,9 @@
                       <el-switch 
                         v-model="detailsList2.ewarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'ewarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -298,7 +344,9 @@
                       <el-switch 
                         v-model="detailsList2.wwarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'wwarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -308,7 +356,9 @@
                       <el-switch 
                         v-model="detailsList2.nwarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'nwarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -318,7 +368,9 @@
                       <el-switch 
                         v-model="detailsList2.swarm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'swarm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -330,7 +382,9 @@
                       <el-switch 
                         v-model="detailsList2.efilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'efilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -340,7 +394,9 @@
                       <el-switch 
                         v-model="detailsList2.wfilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'wfilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -350,7 +406,9 @@
                       <el-switch 
                         v-model="detailsList2.nfilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'nfilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -360,7 +418,9 @@
                       <el-switch 
                         v-model="detailsList2.sfilm" 
                         active-value="1"
-                        inactive-value="0"/>
+                        inactive-value="0"
+                        @change="handleSwitch2($event,'sfilm')"
+                        />
                     </el-tooltip>
                   </div>
                 </el-col>
@@ -381,6 +441,8 @@ export default {
     return {
       uusid1: 'HYMY3001',
       uusid2: 'HYMY3002',
+      greenhouseID1: '1',
+      greenhouseID2: '2',
       value1: true,
       value2: false,
       detailsList1: {
@@ -456,13 +518,35 @@ export default {
         const statu = $event
         const statusname = type
         const uusid = this.uusid1
-        let greenhouseID = 0
-        if (uusid === 'HYMY3001') {
-          greenhouseID = '1'
-        } else if (uusid === 'HYMY3002') {
-          greenhouseID = '2'
-        }
-        console.log(greenhouseID)
+        const greenhouseID = this.greenhouseID1
+        updateControlNodeStatu(uusid, greenhouseID, statusname, statu).then(() => {
+          this.$message({
+            title: 'Success',
+            message: '操作成功！',
+            type: 'success',
+            duration: 2000
+          })
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消操作'
+        })
+        this.getList()
+      })
+    },
+    handleSwitch2($event, type) {
+      this.$confirm('确定操作吗, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        console.log($event)
+        console.log(type)
+        const statu = $event
+        const statusname = type
+        const uusid = this.uusid2
+        const greenhouseID = this.greenhouseID2
         updateControlNodeStatu(uusid, greenhouseID, statusname, statu).then(() => {
           this.$message({
             title: 'Success',
