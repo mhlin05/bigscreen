@@ -231,11 +231,11 @@ export default {
     }
     .flatPage {
       background-image: url('../assets/flatPage.png');
-      width: 87%;
-      height: 87%;
+      width: 92%;
+      height: 93%;
       background-size: 100% 100%;
-      margin-left: 1rem;
-      margin-top: 0.375rem;
+      margin-left: 0.5rem;
+      margin-top: 0rem;
       .imgStyle {
         width: 11.625rem;
         height: 6.25rem;
@@ -244,33 +244,32 @@ export default {
         opacity: 0.6;
       }
       .circle1 {
-        // margin-left: 46px;
-        // margin-bottom: 3px;
+        margin-top: 0.876rem;
         position: absolute;
-        left: 1.5568rem;
+        left: 1.0868rem;
       }
       .circle2 {
         position: absolute;
-        left: 3.875rem;
-        top: 3.4725rem;
+        left: 3.525rem;
+        top: 3.8425rem;
         color: rgb(100, 153, 254);
       }
       .circle3 {
         position: absolute;
-        left: 2.15rem;
-        top: 5.975rem;
+        left: 1.72rem;
+        top: 6.175rem;
         color: rgb(100, 153, 254);
       }
       .circle4 {
         position: absolute;
-        left: 7.35rem;
-        top: 5.5625rem;
+        left: 7.18rem;
+        top: 5.7825rem;
         color: rgb(100, 153, 254);
       }
       .circle5 {
         position: absolute;
-        left: 9.55rem;
-        top: 3.0625rem;
+        left: 9.482rem;
+        top: 3.448rem;
         color: rgb(100, 153, 254);
       }
     }
