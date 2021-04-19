@@ -102,8 +102,8 @@ export default {
   mounted() {},
   methods: {
     handleNodeClick(data) {
-      console.log(data)
-      console.log(typeof data.$treeNodeId)
+      // console.log(data)
+      // console.log(typeof data.$treeNodeId)
       // 保存当前选择的大棚号到state中
       this.$store.dispatch('setHouseNum', data.$treeNodeId)
       if (data.$treeNodeId === 1) {

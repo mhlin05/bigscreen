@@ -20,7 +20,7 @@ export default {
       var myChart = echarts.init(chartDom);
       var option;
 
-      var timeData = ['2021/4/1', '2021/4/2', '2021/4/3', '2021/4/4', '2021/4/5', '2021/4/6', '2021/4/7'];
+      var timeData = ['2021/4/17', '2021/4/18', '2021/4/19', '2021/4/20', '2021/4/21', '2021/4/22', '2021/4/23'];
       timeData = timeData.map(function (str) {
           return str.replace('2021/', '');
       });

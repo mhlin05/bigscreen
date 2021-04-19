@@ -497,13 +497,13 @@ export default {
       const uusid2 = this.uusid2
       fetchControlNodeByuusid(uusid1).then(res => {
         if (res.data.code === 20000) {
-          console.log("=====================================")
+          // console.log("=====================================")
           this.detailsList1 = res.data.data
         }
       })
       fetchControlNodeByuusid(uusid2).then(res => {
         if (res.data.code === 20000) {
-          console.log(res.data)
+          // console.log(res.data)
           this.detailsList2 = res.data.data
         }
       })
@@ -514,8 +514,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        console.log($event)
-        console.log(type)
+        // console.log($event)
+        // console.log(type)
         const statu = $event
         const statusname = type
         const uusid = this.uusid1
@@ -542,8 +542,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        console.log($event)
-        console.log(type)
+        // console.log($event)
+        // console.log(type)
         const statu = $event
         const statusname = type
         const uusid = this.uusid2

@@ -89,9 +89,9 @@ export default {
     },
   },
   mounted() {
-    console.log(this.equipmentSerial)
-    console.log(this.monitorNum)
-    console.group('mounted 组件挂载完毕状态===============》')
+    // console.log(this.equipmentSerial)
+    // console.log(this.monitorNum)
+    // console.group('mounted 组件挂载完毕状态===============》')
     this.player = new EZUIKit.EZUIKitPlayer({
       autoplay: true,
       id: 'video-container',

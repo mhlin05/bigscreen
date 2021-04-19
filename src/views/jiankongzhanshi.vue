@@ -149,7 +149,7 @@ export default {
           'api/atmospheredata/queryByuusid?uusid=HYMY1001&pageSize=10&currentPage=20',
         method: 'get',
       })
-      console.log('res1')
+      // console.log('res1')
       this.meteorologyData.t = res1.data.content[0].t
       this.meteorologyData.rh = res1.data.content[0].rh
       this.meteorologyData.lux = res1.data.content[0].lux
@@ -158,7 +158,7 @@ export default {
       this.meteorologyData.hpa = res1.data.content[0].hpa
       this.meteorologyData.wspd = res1.data.content[0].wspd
 
-      console.log(this.meteorologyData)
+      // console.log(this.meteorologyData)
     },
     async getGreenHouse1Data() {
       const { data: res1 } = await Request({
@@ -166,7 +166,7 @@ export default {
           'api/greenHouseNode/queryByuusid?uusid=HYMY2001&pageSize=10&currentPage=200',
         method: 'get',
       })
-      console.log(res1)
+      // console.log(res1)
       this.greenHouse1.t = res1.data.content[0].t
       this.greenHouse1.rh = res1.data.content[0].rh
       this.greenHouse1.lux = res1.data.content[0].lux
@@ -175,7 +175,7 @@ export default {
       this.greenHouse1.hpa = res1.data.content[0].hpa
       // this.greenHouse1.wspd = res1.data.content[0].wspd
 
-      console.log(this.greenHouse1)
+      // console.log(this.greenHouse1)
     },
     async getGreenHouseDataAsNum(uusid) {
       let soilTemp = []
@@ -200,7 +200,7 @@ export default {
           .data.totalPages - 1}`,
         method: 'get',
       })
-      console.log(res1)
+      // console.log(res1)
       // 设置tooltip数据
       this.greenHouse1.t = res1.data.content[0].t
       this.greenHouse1.rh = res1.data.content[0].rh
@@ -210,7 +210,7 @@ export default {
       this.greenHouse1.hpa = res1.data.content[0].hpa
       // this.greenHouse1.wspd = res1.data.content[0].wspd
 
-      console.log(this.greenHouse1)
+      // console.log(this.greenHouse1)
       if (res1.code === 20000) {
         // 其他数据
         let hpa = res1.data.content[0].hpa
@@ -268,7 +268,7 @@ export default {
           'api/greenHouseNode/queryByuusid?uusid=HYMY2002&pageSize=10&currentPage=200',
         method: 'get',
       })
-      console.log(res1)
+      // console.log(res1)
       this.greenHouse2.t = res1.data.content[0].t
       this.greenHouse2.rh = res1.data.content[0].rh
       this.greenHouse2.lux = res1.data.content[0].lux
@@ -277,7 +277,7 @@ export default {
       this.greenHouse2.hpa = res1.data.content[0].hpa
       // this.greenHouse1.wspd = res1.data.content[0].wspd
 
-      console.log(this.greenHouse2)
+      // console.log(this.greenHouse2)
     },
     async getGreenHouse3Data() {
       const { data: res1 } = await Request({
@@ -285,7 +285,7 @@ export default {
           'api/greenHouseNode/queryByuusid?uusid=HYMY2003&pageSize=10&currentPage=200',
         method: 'get',
       })
-      console.log(res1)
+      // console.log(res1)
       this.greenHouse3.t = res1.data.content[0].t
       this.greenHouse3.rh = res1.data.content[0].rh
       this.greenHouse3.lux = res1.data.content[0].lux
@@ -300,7 +300,7 @@ export default {
           'api/greenHouseNode/queryByuusid?uusid=HYMY2004&pageSize=10&currentPage=200',
         method: 'get',
       })
-      console.log(res1)
+      // console.log(res1)
       this.greenHouse4.t = res1.data.content[0].t
       this.greenHouse4.rh = res1.data.content[0].rh
       this.greenHouse4.lux = res1.data.content[0].lux
@@ -339,11 +339,12 @@ export default {
     }
     .flatPage {
       background-image: url('../assets/flatPage.png');
-      width: 92%;
+      width: 88%;
       height: 93%;
       background-size: 100% 100%;
-      margin-left: 0.5rem;
+      margin-left: 0.8rem;
       margin-top: 0rem;
+      padding: 2rem;
       .imgStyle {
         width: 11.625rem;
         height: 6.25rem;
@@ -352,33 +353,38 @@ export default {
         opacity: 0.6;
       }
       .circle1 {
-        margin-top: 0.876rem;
+        margin-top: -1.126rem;
         position: absolute;
-        left: 1.0868rem;
+        left: 1.3488rem;
+        opacity: 0;
       }
       .circle2 {
         position: absolute;
-        left: 3.525rem;
+        left: 3.695rem;
         top: 3.8425rem;
         color: rgb(100, 153, 254);
+        opacity: 0;
       }
       .circle3 {
         position: absolute;
-        left: 1.72rem;
+        left: 1.952rem;
         top: 6.175rem;
         color: rgb(100, 153, 254);
+        opacity: 0;
       }
       .circle4 {
         position: absolute;
         left: 7.18rem;
         top: 5.7825rem;
         color: rgb(100, 153, 254);
+        opacity: 0;
       }
       .circle5 {
         position: absolute;
-        left: 9.482rem;
+        left: 9.382rem;
         top: 3.448rem;
         color: rgb(100, 153, 254);
+        opacity: 0;
       }
     }
   }
