@@ -13,7 +13,7 @@
       </div>
       <!-- 监控页 -->
       <!-- class="monitor" -->
-      <div v-show="showStatus === 1" class="monitor">
+      <div  class="monitor" v-show="showStatus === 1">
         <EZUIKitJs />
       </div>
       <!-- 平面页 -->
@@ -222,55 +222,55 @@ export default {
   .bg-color-black {
     height: 7.8125rem;
     border-radius: 0.525rem;
-    // .monitor {
-    //   display: block;
-    //   width: 1000px;
-    //   height: 600px;
-    //   margin-left: 30px;
-    //   margin-top: 10px;
-    // }
+    .monitor {
+      display: block;
+      width: 10rem;
+      height: 7.5rem;
+      margin-left: 0.375rem;
+      margin-top: 0.125rem;
+    }
     .flatPage {
       background-image: url('../assets/flatPage.png');
       width: 87%;
       height: 87%;
       background-size: 100% 100%;
-      margin-left: 80px;
-      margin-top: 30px;
+      margin-left: 1rem;
+      margin-top: 0.375rem;
       .imgStyle {
-        width: 930px;
-        height: 500px;
-        margin-left: 50px;
-        margin-top: 30px;
+        width: 11.625rem;
+        height: 6.25rem;
+        margin-left: 0.625rem;
+        margin-top: 0.375rem;
         opacity: 0.6;
       }
       .circle1 {
         // margin-left: 46px;
         // margin-bottom: 3px;
         position: absolute;
-        left: 125px;
+        left: 1.5568rem;
       }
       .circle2 {
         position: absolute;
-        left: 310px;
-        top: 277px;
+        left: 3.875rem;
+        top: 3.4725rem;
         color: rgb(100, 153, 254);
       }
       .circle3 {
         position: absolute;
-        left: 172px;
-        top: 478px;
+        left: 2.15rem;
+        top: 5.975rem;
         color: rgb(100, 153, 254);
       }
       .circle4 {
         position: absolute;
-        left: 588px;
-        top: 445px;
+        left: 7.35rem;
+        top: 5.5625rem;
         color: rgb(100, 153, 254);
       }
       .circle5 {
         position: absolute;
-        left: 764px;
-        top: 245px;
+        left: 9.55rem;
+        top: 3.0625rem;
         color: rgb(100, 153, 254);
       }
     }

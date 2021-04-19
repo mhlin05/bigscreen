@@ -80,10 +80,11 @@ li {
     color: #fff;
     background-color: rgba(26, 44, 109, 0.5);
     border-color: #08175a;
-    margin-left: 0.3rem;
-    margin-top: 0.3rem;
+    margin-left: 0.15rem;
+    margin-top: 0.1rem;
     font-size: 16px;
-    width: 0.8rem;
+    width: 1rem;
+    height: 0.65rem;
     border-color: #053169;
   }
 }

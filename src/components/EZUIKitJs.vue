@@ -2,7 +2,7 @@
   <div class="hello-ezuikit-js">
     <div
       id="video-container"
-      style="width:800px;height:500px"
+      style="width:700px;height:500px;margin-left:200px;margin-top:80px;"
     ></div>
   </div>
 </template>
@@ -106,7 +106,7 @@ export default {
         this.monitorNum +
         '.live',
       // E99632751/1.live',
-      template: 'simple', // simple - 极简版;standard-标准版;security - 安防版(预览回放);voice-语音版；
+      template: 'standard', // simple - 极简版;standard-标准版;security - 安防版(预览回放);voice-语音版；
       // 视频上方头部控件
       //header: ["capturePicture", "save", "zoom"], // 如果templete参数不为simple,该字段将被覆盖
       //plugin: ['talk'],                       // 加载插件，talk-对讲
@@ -120,7 +120,7 @@ export default {
       // capturePictureCallBack: data => console.log("截图成功回调", data),
       // fullScreenCallBack: data => console.log("全屏回调", data),
       // getOSDTimeCallBack: data => console.log("获取OSDTime回调", data),
-      width: 860,
+      width: 600,
       height: 400,
     })
     // console.log('player', this.player)
