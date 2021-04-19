@@ -13,12 +13,12 @@
       </div>
       <!-- 监控页 -->
       <!-- class="monitor" -->
-      <div  class="monitor" v-show="showStatus === 1">
+      <div class="monitor" v-show="showStatus === 1">
         <EZUIKitJs />
       </div>
       <!-- 平面页 -->
       <div class="flatPage" v-show="showStatus === 2">
-        <!-- 按钮1 -->
+        <!-- 室外气象站 -->
         <el-tooltip effect="dark" placement="bottom" class="circle1">
           <div slot="content">
             温度：{{ this.meteorologyData.t }}℃ <br />
@@ -32,7 +32,7 @@
           <el-button circle></el-button>
         </el-tooltip>
 
-        <!-- 按钮2 -->
+        <!-- 二号温室 -->
         <el-tooltip effect="dark" placement="top" class="circle2">
           <div slot="content">
             温度：{{ this.greenHouse1.t }}℃ <br />
@@ -42,8 +42,12 @@
             PM2.5：{{ this.greenHouse1.pm25 }}ug/m3° <br />
             气压：{{ this.greenHouse1.hpa }}百帕 <br />
           </div>
-          <el-button circle></el-button>
+          <el-button
+            circle
+            @click="getGreenHouseDataAsNum('HYMY2002')"
+          ></el-button>
         </el-tooltip>
+        <!-- 一号温室 -->
         <el-tooltip effect="dark" placement="top" class="circle3">
           <div slot="content">
             温度：{{ this.greenHouse2.t }}℃ <br />
@@ -53,9 +57,13 @@
             PM2.5：{{ this.greenHouse2.pm25 }}ug/m3° <br />
             气压：{{ this.greenHouse2.hpa }}百帕 <br />
           </div>
-          <el-button circle></el-button>
-          <el-button circle style="color: rgb(100, 153, 254);"></el-button>
+          <el-button
+            circle
+            style="color: rgb(100, 153, 254);"
+            @click="getGreenHouseDataAsNum('HYMY2001')"
+          ></el-button>
         </el-tooltip>
+        <!-- 三号温室 -->
         <el-tooltip effect="dark" placement="top" class="circle4">
           <div slot="content">
             温度：{{ this.greenHouse3.t }}℃ <br />
@@ -65,8 +73,13 @@
             PM2.5：{{ this.greenHouse3.pm25 }}ug/m3° <br />
             气压：{{ this.greenHouse3.hpa }}百帕 <br />
           </div>
-          <el-button circle style="color: rgb(100, 153, 254);"></el-button>
+          <el-button
+            circle
+            style="color: rgb(100, 153, 254);"
+            @click="getGreenHouseDataAsNum('HYMY2003')"
+          ></el-button>
         </el-tooltip>
+        <!-- 四号温室 -->
         <el-tooltip effect="dark" placement="top" class="circle5">
           <div slot="content">
             温度：{{ this.greenHouse4.t }}℃ <br />
@@ -76,7 +89,12 @@
             PM2.5：{{ this.greenHouse4.pm25 }}ug/m3° <br />
             气压：{{ this.greenHouse4.hpa }}百帕 <br />
           </div>
-          <el-button circle style="color: rgb(100, 153, 254);"></el-button>
+
+          <el-button
+            circle
+            style="color: rgb(100, 153, 254);"
+            @click="getGreenHouseDataAsNum('HYMY2004')"
+          ></el-button>
         </el-tooltip>
         <!-- <el-button @click="getToolTipData()">111</el-button> -->
 
@@ -87,6 +105,8 @@
 </template>
 
 <script>
+import { getHMS } from '@/utils/index.js'
+
 import Request from '@/utils/request.js'
 // import $ from 'jquery'
 import EZUIKitJs from '@/components/EZUIKitJs.vue'
@@ -95,6 +115,7 @@ export default {
     return {
       showStatus: 2,
       meteorologyData: { t: '', rh: '', lux: '', pm10: '', pm25: '', hpa: '' },
+      // tooltip展示数据
       greenHouse1: { t: '', rh: '', lux: '', pm10: '', pm25: '', hpa: '' },
       greenHouse2: { t: '', rh: '', lux: '', pm10: '', pm25: '', hpa: '' },
       greenHouse3: { t: '', rh: '', lux: '', pm10: '', pm25: '', hpa: '' },
@@ -107,7 +128,9 @@ export default {
   mounted() {
     this.getToolTipData()
   },
-  created() {},
+  created() {
+    this.getGreenHouseDataAsNum('HYMY2001')
+  },
 
   methods: {
     // 获取tooltip的数据
@@ -153,6 +176,91 @@ export default {
       // this.greenHouse1.wspd = res1.data.content[0].wspd
 
       console.log(this.greenHouse1)
+    },
+    async getGreenHouseDataAsNum(uusid) {
+      let soilTemp = []
+      let skyTemp = []
+      let crtTime = []
+      let soilHumidity = []
+      let skyHumidity = []
+      let pm10 = []
+      let pm2_5 = []
+      let co2 = []
+      let tvoc = []
+      let so2 = []
+      let o2 = []
+      // 先获取总页码
+      const { data: res } = await Request({
+        url: `api/greenHouseNode/queryByuusid?uusid=${uusid}&pageSize=10&currentPage=200`,
+        method: 'get',
+      })
+      // 获取倒数第二页数据
+      const { data: res1 } = await Request({
+        url: `api/greenHouseNode/queryByuusid?uusid=${uusid}&pageSize=10&currentPage=${res
+          .data.totalPages - 1}`,
+        method: 'get',
+      })
+      console.log(res1)
+      // 设置tooltip数据
+      this.greenHouse1.t = res1.data.content[0].t
+      this.greenHouse1.rh = res1.data.content[0].rh
+      this.greenHouse1.lux = res1.data.content[0].lux
+      this.greenHouse1.pm10 = res1.data.content[0].pm10
+      this.greenHouse1.pm25 = res1.data.content[0].pm25
+      this.greenHouse1.hpa = res1.data.content[0].hpa
+      // this.greenHouse1.wspd = res1.data.content[0].wspd
+
+      console.log(this.greenHouse1)
+      if (res1.code === 20000) {
+        // 其他数据
+        let hpa = res1.data.content[0].hpa
+        let lux = res1.data.content[0].lux
+        let eph = res1.data.content[0].eph
+        let eec = res1.data.content[0].eec
+        let ek = res1.data.content[0].ek
+        let en = res1.data.content[0].en
+        let ep = res1.data.content[0].ep
+        this.$store.dispatch('others/setHPA', Math.floor(hpa))
+        this.$store.dispatch('others/setLUX', lux)
+        this.$store.dispatch('others/setEPH', eph)
+        this.$store.dispatch('others/setEEC', eec)
+        this.$store.dispatch('others/setEK', ek)
+        this.$store.dispatch('others/setEN', en)
+        this.$store.dispatch('others/setEP', ep)
+
+        // console.log(res1.data)
+        for (let index = 0; index < 5; index++) {
+          soilTemp.push(res1.data.content[index].et)
+          skyTemp.push(res1.data.content[index].t)
+          crtTime.push(getHMS(res1.data.content[index].createTime))
+          soilHumidity.push(res1.data.content[index].erh)
+          skyHumidity.push(res1.data.content[index].rh)
+          pm2_5.push(res1.data.content[index].pm25)
+          pm10.push(res1.data.content[index].pm10)
+          co2.push(res1.data.content[index].co2)
+          tvoc.push(res1.data.content[index].tvoc)
+          so2.push(res1.data.content[index].so2)
+          o2.push(res1.data.content[index].o2)
+        }
+        // 设置温度
+        this.$store.dispatch('tetline/setSoilTemp', soilTemp)
+        this.$store.dispatch('tetline/setSkyTemp', skyTemp)
+        this.$store.dispatch('tetline/setTime', crtTime)
+        // 设置湿度
+        this.$store.dispatch('humidity/setSkyHumidity', skyHumidity)
+        this.$store.dispatch('humidity/setSoilHumidity', soilHumidity)
+        this.$store.dispatch('humidity/setTime', crtTime)
+        // 设置pm
+        this.$store.dispatch('pm/setPm10', pm10)
+        this.$store.dispatch('pm/setPm2_5', pm2_5)
+        this.$store.dispatch('pm/setTime', crtTime)
+        // 设置空气含量
+        this.$store.dispatch('gas/setCO2', co2)
+        this.$store.dispatch('gas/setTVOC', tvoc)
+        this.$store.dispatch('gas/setSO2', so2)
+        this.$store.dispatch('gas/setO2', o2)
+        this.$store.dispatch('gas/setTime', crtTime)
+      }
     },
     async getGreenHouse2Data() {
       const { data: res1 } = await Request({

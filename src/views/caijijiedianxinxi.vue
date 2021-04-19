@@ -27,7 +27,7 @@
       <div class="other">
         <el-row :gutter="10">
           <el-col :span="11" :offset="1">大气压力:{{ hpa }}hPa</el-col>
-          <el-col :span="11" :offset="1">光照度:{{ lux }}</el-col>
+          <el-col :span="11" :offset="1">光照度:{{ lux }}lux</el-col>
         </el-row>
         <el-row :gutter="10">
           <el-col :span="11" :offset="1">土壤pH:{{ eph }}</el-col>

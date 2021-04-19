@@ -1,13 +1,13 @@
 export default {
   namespaced: true,
   state: {
-    hpa: 1.1,
-    lux: 2,
-    eph: 5.5,
-    eec: 60,
-    en: 1,
-    ep: 2,
-    ek: 1,
+    hpa: '',
+    lux: '',
+    eph: '',
+    eec: '',
+    en: '',
+    ep: '',
+    ek: '',
   },
   mutations: {
     sethpa(state, payload) {

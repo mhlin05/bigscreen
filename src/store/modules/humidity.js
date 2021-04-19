@@ -1,9 +1,9 @@
 export default {
   namespaced: true,
   state: {
-    skyHumidity: [30, 40, 50, 90, 35],
-    soilHumidity: [31, 22, 3, 84, 25],
-    time: ['10:22:30', '10:23:30', '10:24:30', '10:25:30', '10:26:30'],
+    skyHumidity: [],
+    soilHumidity: [],
+    time: [],
   },
   mutations: {
     setSky(state, payload) {
