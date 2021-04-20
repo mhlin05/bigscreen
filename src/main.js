@@ -1,47 +1,46 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import dataV from '@jiaminghi/data-view';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(dataV);
-Vue.use(ElementUI);
-
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import dataV from '@jiaminghi/data-view'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(dataV)
+Vue.use(ElementUI)
+// ddddd
 // 按需引入按钮组件
-import { Button } from "ant-design-vue";
+import { Button } from 'ant-design-vue'
 import 'ant-design-vue/lib/button/style/css'
 Vue.component(Button.name, Button)
 
 // 按需引入vue-awesome图标
-import Icon from 'vue-awesome/components/Icon';
-import 'vue-awesome/icons/chart-bar.js';
-import 'vue-awesome/icons/chart-area.js';
-import 'vue-awesome/icons/chart-pie.js';
-import 'vue-awesome/icons/chart-line.js';
-import 'vue-awesome/icons/align-left.js';
-import 'vue-awesome/icons/video.js';
-import 'vue-awesome/icons/cog.js';
-import 'vue-awesome/icons/tachometer-alt.js';
+import Icon from 'vue-awesome/components/Icon'
+import 'vue-awesome/icons/chart-bar.js'
+import 'vue-awesome/icons/chart-area.js'
+import 'vue-awesome/icons/chart-pie.js'
+import 'vue-awesome/icons/chart-line.js'
+import 'vue-awesome/icons/align-left.js'
+import 'vue-awesome/icons/video.js'
+import 'vue-awesome/icons/cog.js'
+import 'vue-awesome/icons/tachometer-alt.js'
 
 // 全局注册图标
-Vue.component('icon', Icon);
+Vue.component('icon', Icon)
 
 // 适配flex
-import '@/common/flexible.js';
+import '@/common/flexible.js'
 
 // 引入全局css
-import './assets/scss/style.scss';
-
+import './assets/scss/style.scss'
 
 //引入echart
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
   render: (h) => h(App),
-}).$mount('#app');
+}).$mount('#app')
